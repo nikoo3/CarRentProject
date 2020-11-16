@@ -5,7 +5,7 @@ import org.hibernate.cfg.Configuration;
 
 public class SessionProvider {
 
-    public static SessionProvider(){};
+    private SessionProvider(){}
 
     public static Session getSession() {
         return new Configuration().configure().buildSessionFactory().openSession();
