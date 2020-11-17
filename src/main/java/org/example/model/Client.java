@@ -1,40 +1,39 @@
 package org.example.model;
 
-
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Objects;
 
+
 @Entity
-@Table(name = "Client")
+@Table(name = "client")
 public class Client {
 
-
     @Id
-    @Column
-    @GeneratedValue(generator = "ClientSeq")
-    @GenericGenerator(name = "ClientSqq",strategy = "increment")
-    private Integer id;
+    @Column(name = "id")
+    @GeneratedValue(generator = "clientSeq")
+    @GenericGenerator(name = "clientSeq" , strategy = "increment")
+    private int id;
 
     @Column(name = "firstName")
     private String firstName;
+
     @Column(name =  "lastName")
     private String lastName;
 
-    public Client() {
-    }
+    public Client() {}
 
     public Client(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -71,11 +70,10 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Cl ient{" +
+        return "Client{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ",  lastName='" + lastName + '\'' +
                 '}';
     }
-
 }

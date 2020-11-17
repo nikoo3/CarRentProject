@@ -7,11 +7,11 @@
     <session-factory>
         <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.username">SDAroot</property>
-        <property name="connection.password">SDA</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/Car_RENTAL?serverTimezone=UTC</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">mn1204</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/carrental?serverTimezone=UTC</property>
         <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
-        <property name="show_sql">false</property>
+        <property name="show_sql">true</property>
         <property name="hbm2ddl.auto">update</property>
         <mapping class="org.example.model.Car"/>
         <mapping class="org.example.model.Client"/>
