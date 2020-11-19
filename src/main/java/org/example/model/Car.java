@@ -1,50 +1,45 @@
 package org.example.model;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.Objects;
 
 
 @Entity
-@Table(name = "cars")
+@Table(name = "CAR")
 public class Car {
 
     @Id
-    @Column(name = "id")
+    @Column( name = "id" )
+    @GeneratedValue(generator = "carSeq")
+    @GenericGenerator(name = "carSeq" , strategy = "increment")
     private int id;
 
-    @Column(name = "brand")
+    @Column
     private String brand;
 
-    @Column(name = "model")
+    @Column
     private String model;
 
-    @Column(name = "color")
+    @Column
+    private String numbers;
+
+    @Column
     private String color;
 
-    @Column(name = "condition")
+    @Column
     private String condition;
 
-    @Column(name = "desciptionsOfTheDamage")
+    @Column
     private String descOfTheDamage;
 
-
-    public Car(String descOfTheDamage) {
-        this.descOfTheDamage = descOfTheDamage;
-    }
-
-    public Car(String brand, String model, String color, String condition, String descOfTheDamage) {
-        this.brand = brand;
-        this.model = model;
-        this.color = color;
-        this.condition = condition;
-        this.descOfTheDamage = descOfTheDamage;
-    }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId( int id ) {
         this.id = id;
     }
 
@@ -52,7 +47,7 @@ public class Car {
         return brand;
     }
 
-    public void setBrand(String brand) {
+    public void setBrand( String brand ) {
         this.brand = brand;
     }
 
@@ -60,9 +55,13 @@ public class Car {
         return model;
     }
 
-    public void setModel(String model) {
+    public void setModel( String model ) {
         this.model = model;
     }
+
+    public String getNumbers() { return numbers; }
+
+    public void setNumbers(String numbers) { this.numbers = numbers; }
 
     public String getColor() {
         return color;
@@ -84,6 +83,18 @@ public class Car {
 
     public void setDescOfTheDamage(String descOfTheDamage) { this.descOfTheDamage = descOfTheDamage; }
 
+
+    public Car() { }
+
+    public Car(String brand, String model, String numbers, String color, String condition, String descOfTheDamage) {
+        this.brand = brand;
+        this.model = model;
+        this.numbers = numbers;
+        this.color = color;
+        this.condition = condition;
+        this.descOfTheDamage = descOfTheDamage;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -92,6 +103,7 @@ public class Car {
         return id == car.id &&
                 Objects.equals(brand, car.brand) &&
                 Objects.equals(model, car.model) &&
+                Objects.equals(numbers, car.numbers) &&
                 Objects.equals(color, car.color) &&
                 Objects.equals(condition, car.condition) &&
                 Objects.equals(descOfTheDamage, car.descOfTheDamage);
@@ -99,7 +111,7 @@ public class Car {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, brand, model, color, condition, descOfTheDamage);
+        return Objects.hash(id, brand, model, numbers, color, condition, descOfTheDamage);
     }
 
     @Override
@@ -108,6 +120,7 @@ public class Car {
                 "id=" + id +
                 ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
+                ", numbers='" + numbers + '\'' +
                 ", color='" + color + '\'' +
                 ", condition='" + condition + '\'' +
                 ", descOfTheDamage='" + descOfTheDamage + '\'' +
