@@ -16,22 +16,22 @@ public class Car {
     @GenericGenerator(name = "carSeq" , strategy = "increment")
     private int id;
 
-    @Column
+    @Column(name = "brand")
     private String brand;
 
-    @Column
+    @Column(name = "model")
     private String model;
 
-    @Column
+    @Column(name = "reg_number")
     private String numbers;
 
-    @Column
+    @Column(name = "color")
     private String color;
 
-    @Column
-    private String condition;
+    @Column(name = "tech_condition")
+    private String technicalCondition;
 
-    @Column
+    @Column(name = "damages_desc")
     private String descOfTheDamage;
 
 
@@ -71,12 +71,12 @@ public class Car {
         this.color = color;
     }
 
-    public String getCondition() {
-        return condition;
+    public String getTechnicalCondition() {
+        return technicalCondition;
     }
 
-    public void setCondition(String condition) {
-        this.condition = condition;
+    public void setTechnicalCondition(String technicalCondition) {
+        this.technicalCondition = technicalCondition;
     }
 
     public String getDescOfTheDamage() { return descOfTheDamage; }
@@ -86,12 +86,12 @@ public class Car {
 
     public Car() { }
 
-    public Car(String brand, String model, String numbers, String color, String condition, String descOfTheDamage) {
+    public Car(String brand, String model, String numbers, String color, String technicalCondition, String descOfTheDamage) {
         this.brand = brand;
         this.model = model;
         this.numbers = numbers;
         this.color = color;
-        this.condition = condition;
+        this.technicalCondition = technicalCondition;
         this.descOfTheDamage = descOfTheDamage;
     }
 
@@ -105,13 +105,13 @@ public class Car {
                 Objects.equals(model, car.model) &&
                 Objects.equals(numbers, car.numbers) &&
                 Objects.equals(color, car.color) &&
-                Objects.equals(condition, car.condition) &&
+                Objects.equals(technicalCondition, car.technicalCondition) &&
                 Objects.equals(descOfTheDamage, car.descOfTheDamage);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, brand, model, numbers, color, condition, descOfTheDamage);
+        return Objects.hash(id, brand, model, numbers, color, technicalCondition, descOfTheDamage);
     }
 
     @Override
@@ -122,7 +122,7 @@ public class Car {
                 ", model='" + model + '\'' +
                 ", numbers='" + numbers + '\'' +
                 ", color='" + color + '\'' +
-                ", condition='" + condition + '\'' +
+                ", technicalCondition='" + technicalCondition + '\'' +
                 ", descOfTheDamage='" + descOfTheDamage + '\'' +
                 '}';
     }

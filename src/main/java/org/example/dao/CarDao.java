@@ -20,10 +20,10 @@ public class CarDao extends AbstractDao<Car>{
         session.close();
     }
 
-    public void updateConditionAndDamages(Car car , String condition , String descriptions) {
+    public void updateTechnicalConditionAndDamages(Car car , String condition , String descriptions) {
         Session session = SessionProvider.getSession();
         Transaction transaction = session.beginTransaction();
-        car.setCondition(condition);
+        car.setTechnicalCondition(condition);
         car.setDescOfTheDamage(descriptions);
         session.update(car);
         transaction.commit();

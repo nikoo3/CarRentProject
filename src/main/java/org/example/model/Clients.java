@@ -7,8 +7,8 @@ import java.util.Objects;
 
 
 @Entity
-@Table( name = "CLIENT" )
-public class Client {
+@Table( name = "'CLIENTS'" )
+public class Clients {
 
     @Id
     @Column
@@ -16,16 +16,16 @@ public class Client {
     @GenericGenerator(name = "clientSeq" , strategy = "increment")
     private int id;
 
-    @Column
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column
+    @Column(name = "last_name")
     private String lastName;
 
 
-    public Client() {}
+    public Clients() {}
 
-    public Client(String firstName, String lastName) {
+    public Clients(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -60,10 +60,10 @@ public class Client {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Client client = (Client) o;
-        return Objects.equals(id, client.id) &&
-                Objects.equals(firstName, client.firstName) &&
-                Objects.equals(lastName, client.lastName);
+        Clients clients = (Clients) o;
+        return Objects.equals(id, clients.id) &&
+                Objects.equals(firstName, clients.firstName) &&
+                Objects.equals(lastName, clients.lastName);
     }
 
     @Override

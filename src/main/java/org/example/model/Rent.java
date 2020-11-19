@@ -19,8 +19,8 @@ public class Rent {
     @Column(name = "Car")
     private Car car;
 
-    @Column(name = "client")
-    private Client client;
+    @Column(name = "'client'")
+    private Clients clients;
 
     @Column(name = "rental day")
     private String rentalDay;
@@ -31,9 +31,9 @@ public class Rent {
 
     public Rent() { }
 
-    public Rent(Car car, Client client, String rentalDay, String dayOfExpiry) {
+    public Rent(Car car, Clients clients, String rentalDay, String dayOfExpiry) {
         this.car = car;
-        this.client = client;
+        this.clients = clients;
         this.rentalDay = rentalDay;
         this.dayOfExpiry = dayOfExpiry;
     }
@@ -43,9 +43,9 @@ public class Rent {
 
     public void setCar(Car car) { this.car = car; }
 
-    public Client getClient() { return client; }
+    public Clients getClient() { return clients; }
 
-    public void setClient(Client client) { this.client = client; }
+    public void setClient(Clients clients) { this.clients = clients; }
 
     public String getRentalDay() { return rentalDay; }
 
@@ -63,20 +63,20 @@ public class Rent {
         Rent rent = (Rent) o;
         return id == rent.id &&
                 Objects.equals(car, rent.car) &&
-                Objects.equals(client, rent.client) &&
+                Objects.equals(clients, rent.clients) &&
                 Objects.equals(rentalDay, rent.rentalDay) &&
                 Objects.equals(dayOfExpiry, rent.dayOfExpiry);
     }
 
     @Override
-    public int hashCode() { return Objects.hash(id, car, client, rentalDay, dayOfExpiry); }
+    public int hashCode() { return Objects.hash(id, car, clients, rentalDay, dayOfExpiry); }
 
     @Override
     public String toString() {
         return "Rent{" +
                 "id=" + id +
                 ", car=" + car +
-                ", client=" + client +
+                ", client=" + clients +
                 ", rentalDay='" + rentalDay + '\'' +
                 ", dayOfExpiry='" + dayOfExpiry + '\'' +
                 '}';

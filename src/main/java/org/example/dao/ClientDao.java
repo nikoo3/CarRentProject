@@ -1,11 +1,11 @@
 package org.example.dao;
 
-import org.example.model.Client;
+import org.example.model.Clients;
 
 
-public class ClientDao extends AbstractDao<Client>{
+public class ClientDao extends AbstractDao<Clients>{
 
     public ClientDao(){
-        super(Client.class);
+        super(Clients.class);
     }
 }
