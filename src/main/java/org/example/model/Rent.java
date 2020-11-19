@@ -16,11 +16,13 @@ public class Rent {
     @GenericGenerator(name = "RentsSeq" , strategy = "increment")
     private int id;
 
+    @ManyToOne
     @Column(name = "Car")
     private Car car;
 
+    @ManyToOne
     @Column(name = "'client'")
-    private Clients clients;
+    private Customer customer;
 
     @Column(name = "rental day")
     private String rentalDay;
@@ -31,9 +33,9 @@ public class Rent {
 
     public Rent() { }
 
-    public Rent(Car car, Clients clients, String rentalDay, String dayOfExpiry) {
+    public Rent(Car car, Customer customer, String rentalDay, String dayOfExpiry) {
         this.car = car;
-        this.clients = clients;
+        this.customer = customer;
         this.rentalDay = rentalDay;
         this.dayOfExpiry = dayOfExpiry;
     }
@@ -43,9 +45,9 @@ public class Rent {
 
     public void setCar(Car car) { this.car = car; }
 
-    public Clients getClient() { return clients; }
+    public Customer getClient() { return customer; }
 
-    public void setClient(Clients clients) { this.clients = clients; }
+    public void setClient(Customer customer) { this.customer = customer; }
 
     public String getRentalDay() { return rentalDay; }
 
@@ -63,20 +65,20 @@ public class Rent {
         Rent rent = (Rent) o;
         return id == rent.id &&
                 Objects.equals(car, rent.car) &&
-                Objects.equals(clients, rent.clients) &&
+                Objects.equals(customer, rent.customer) &&
                 Objects.equals(rentalDay, rent.rentalDay) &&
                 Objects.equals(dayOfExpiry, rent.dayOfExpiry);
     }
 
     @Override
-    public int hashCode() { return Objects.hash(id, car, clients, rentalDay, dayOfExpiry); }
+    public int hashCode() { return Objects.hash(id, car, customer, rentalDay, dayOfExpiry); }
 
     @Override
     public String toString() {
         return "Rent{" +
                 "id=" + id +
                 ", car=" + car +
-                ", client=" + clients +
+                ", client=" + customer +
                 ", rentalDay='" + rentalDay + '\'' +
                 ", dayOfExpiry='" + dayOfExpiry + '\'' +
                 '}';

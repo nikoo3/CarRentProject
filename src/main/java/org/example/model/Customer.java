@@ -7,8 +7,8 @@ import java.util.Objects;
 
 
 @Entity
-@Table( name = "'CLIENTS'" )
-public class Clients {
+@Table( name = "Customer" )
+public class Customer {
 
     @Id
     @Column
@@ -23,9 +23,9 @@ public class Clients {
     private String lastName;
 
 
-    public Clients() {}
+    public Customer() {}
 
-    public Clients(String firstName, String lastName) {
+    public Customer(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -60,10 +60,10 @@ public class Clients {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Clients clients = (Clients) o;
-        return Objects.equals(id, clients.id) &&
-                Objects.equals(firstName, clients.firstName) &&
-                Objects.equals(lastName, clients.lastName);
+        Customer customer = (Customer) o;
+        return Objects.equals(id, customer.id) &&
+                Objects.equals(firstName, customer.firstName) &&
+                Objects.equals(lastName, customer.lastName);
     }
 
     @Override
