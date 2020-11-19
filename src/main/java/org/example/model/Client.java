@@ -7,20 +7,21 @@ import java.util.Objects;
 
 
 @Entity
-@Table(name = "client")
+@Table( name = "CLIENT" )
 public class Client {
 
     @Id
-    @Column(name = "id")
+    @Column
     @GeneratedValue(generator = "clientSeq")
     @GenericGenerator(name = "clientSeq" , strategy = "increment")
     private int id;
 
-    @Column(name = "firstName")
+    @Column
     private String firstName;
 
-    @Column(name =  "lastName")
+    @Column
     private String lastName;
+
 
     public Client() {}
 
@@ -28,6 +29,7 @@ public class Client {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+
 
     public int getId() {
         return id;
@@ -52,6 +54,7 @@ public class Client {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
 
     @Override
     public boolean equals(Object o) {
