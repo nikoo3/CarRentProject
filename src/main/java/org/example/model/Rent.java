@@ -17,27 +17,29 @@ public class Rent {
     private int id;
 
     @ManyToOne
+    @Embedded
     @Column(name = "Car")
     private Car car;
 
     @ManyToOne
-    @Column(name = "'client'")
+    @Embedded
+    @Column(name = "Customer")
     private Customer customer;
 
     @Column(name = "rental day")
     private String rentalDay;
 
-    @Column(name =  "day of expiry")
-    private String dayOfExpiry;
+    @Column(name =  "day of return")
+    private String dayOfReturn;
 
 
     public Rent() { }
 
-    public Rent(Car car, Customer customer, String rentalDay, String dayOfExpiry) {
+    public Rent(Car car, Customer customer, String rentalDay, String dayOfReturn) {
         this.car = car;
         this.customer = customer;
         this.rentalDay = rentalDay;
-        this.dayOfExpiry = dayOfExpiry;
+        this.dayOfReturn = dayOfReturn;
     }
 
 
@@ -53,9 +55,9 @@ public class Rent {
 
     public void setRentalDay(String rentalDay) { this.rentalDay = rentalDay; }
 
-    public String getDayOfExpiry() { return dayOfExpiry; }
+    public String getDayOfReturn() { return dayOfReturn; }
 
-    public void setDayOfExpiry(String dayOfExpiry) { this.dayOfExpiry = dayOfExpiry; }
+    public void setDayOfReturn(String dayOfReturn) { this.dayOfReturn = dayOfReturn; }
 
 
     @Override
@@ -67,11 +69,11 @@ public class Rent {
                 Objects.equals(car, rent.car) &&
                 Objects.equals(customer, rent.customer) &&
                 Objects.equals(rentalDay, rent.rentalDay) &&
-                Objects.equals(dayOfExpiry, rent.dayOfExpiry);
+                Objects.equals(dayOfReturn, rent.dayOfReturn);
     }
 
     @Override
-    public int hashCode() { return Objects.hash(id, car, customer, rentalDay, dayOfExpiry); }
+    public int hashCode() { return Objects.hash(id, car, customer, rentalDay, dayOfReturn); }
 
     @Override
     public String toString() {
@@ -80,7 +82,7 @@ public class Rent {
                 ", car=" + car +
                 ", client=" + customer +
                 ", rentalDay='" + rentalDay + '\'' +
-                ", dayOfExpiry='" + dayOfExpiry + '\'' +
+                ", dayOfExpiry='" + dayOfReturn + '\'' +
                 '}';
     }
 }

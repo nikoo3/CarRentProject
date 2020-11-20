@@ -10,10 +10,10 @@ public class RentDao extends AbstractDao<Rent> {
 
     public RentDao() { super(Rent.class); }
 
-    public void updateDayOfExpiry(Rent rent , String dayOfExpiry) {
+    public void updateDayOfReturn(Rent rent , String dayOfReturn) {
         Session session = SessionProvider.getSession();
         Transaction transaction = session.beginTransaction();
-        rent.setDayOfExpiry(dayOfExpiry);
+        rent.setDayOfReturn(dayOfReturn);
         session.update(rent);
         transaction.commit();
         session.close();
