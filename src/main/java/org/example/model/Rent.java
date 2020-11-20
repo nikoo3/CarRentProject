@@ -3,12 +3,13 @@ package org.example.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Objects;
 
 
 @Entity
-@Table( name = "RENTAL" )
-public class Rental {
+@Table( name = "RENT" )
+public class Rent {
 
     @Id
     @Column
@@ -16,22 +17,22 @@ public class Rental {
     @GenericGenerator(name = "rentsSeq" , strategy = "increment")
     private int id;
 
+    @Column(name = "rental day")
+    private LocalDate rentalDay;
+
+    @Column(name =  "day of return")
+    private LocalDate dayOfReturn;
+
     @ManyToOne
     private Car car;
 
     @ManyToOne
     private Customer customer;
 
-    @Column(name = "rental day")
-    private String rentalDay;
 
-    @Column(name =  "day of return")
-    private String dayOfReturn;
+    public Rent() { }
 
-
-    public Rental() { }
-
-    public Rental(Car car, Customer customer, String rentalDay, String dayOfReturn) {
+    public Rent(Car car, Customer customer, LocalDate rentalDay, LocalDate dayOfReturn) {
         this.car = car;
         this.customer = customer;
         this.rentalDay = rentalDay;
@@ -47,25 +48,25 @@ public class Rental {
 
     public void setClient(Customer customer) { this.customer = customer; }
 
-    public String getRentalDay() { return rentalDay; }
+    public LocalDate getRentalDay() { return rentalDay; }
 
-    public void setRentalDay(String rentalDay) { this.rentalDay = rentalDay; }
+    public void setRentalDay(LocalDate rentalDay) { this.rentalDay = rentalDay; }
 
-    public String getDayOfReturn() { return dayOfReturn; }
+    public LocalDate getDayOfReturn() { return dayOfReturn; }
 
-    public void setDayOfReturn(String dayOfReturn) { this.dayOfReturn = dayOfReturn; }
+    public void setDayOfReturn(LocalDate dayOfReturn) { this.dayOfReturn = dayOfReturn; }
 
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Rental rental = (Rental) o;
-        return id == rental.id &&
-                Objects.equals(car, rental.car) &&
-                Objects.equals(customer, rental.customer) &&
-                Objects.equals(rentalDay, rental.rentalDay) &&
-                Objects.equals(dayOfReturn, rental.dayOfReturn);
+        Rent rent = (Rent) o;
+        return id == rent.id &&
+                Objects.equals(car, rent.car) &&
+                Objects.equals(customer, rent.customer) &&
+                Objects.equals(rentalDay, rent.rentalDay) &&
+                Objects.equals(dayOfReturn, rent.dayOfReturn);
     }
 
     @Override
