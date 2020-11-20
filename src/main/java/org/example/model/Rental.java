@@ -7,23 +7,19 @@ import java.util.Objects;
 
 
 @Entity
-@Table( name = "RENT" )
-public class Rent {
+@Table( name = "RENTAL" )
+public class Rental {
 
     @Id
     @Column
-    @GeneratedValue(generator = "RentsSeq")
-    @GenericGenerator(name = "RentsSeq" , strategy = "increment")
+    @GeneratedValue(generator = "rentsSeq")
+    @GenericGenerator(name = "rentsSeq" , strategy = "increment")
     private int id;
 
     @ManyToOne
-    @Embedded
-    @Column(name = "Car")
     private Car car;
 
     @ManyToOne
-    @Embedded
-    @Column(name = "Customer")
     private Customer customer;
 
     @Column(name = "rental day")
@@ -33,9 +29,9 @@ public class Rent {
     private String dayOfReturn;
 
 
-    public Rent() { }
+    public Rental() { }
 
-    public Rent(Car car, Customer customer, String rentalDay, String dayOfReturn) {
+    public Rental(Car car, Customer customer, String rentalDay, String dayOfReturn) {
         this.car = car;
         this.customer = customer;
         this.rentalDay = rentalDay;
@@ -64,12 +60,12 @@ public class Rent {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Rent rent = (Rent) o;
-        return id == rent.id &&
-                Objects.equals(car, rent.car) &&
-                Objects.equals(customer, rent.customer) &&
-                Objects.equals(rentalDay, rent.rentalDay) &&
-                Objects.equals(dayOfReturn, rent.dayOfReturn);
+        Rental rental = (Rental) o;
+        return id == rental.id &&
+                Objects.equals(car, rental.car) &&
+                Objects.equals(customer, rental.customer) &&
+                Objects.equals(rentalDay, rental.rentalDay) &&
+                Objects.equals(dayOfReturn, rental.dayOfReturn);
     }
 
     @Override
