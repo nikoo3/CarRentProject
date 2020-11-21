@@ -17,10 +17,10 @@ public class Rent {
     @GenericGenerator(name = "rentsSeq" , strategy = "increment")
     private int id;
 
-    @Column(name = "rental day")
+    @Column(name = "rental_day")
     private LocalDate rentalDay;
 
-    @Column(name =  "day of return")
+    @Column(name =  "day_of_return")
     private LocalDate dayOfReturn;
 
     @ManyToOne
